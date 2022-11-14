@@ -69,7 +69,7 @@ export const createStructure = async () => {
     '  ON DELETE CASCADE' +
     ');');
 
-  client.end();
+   client.end();
 };
 
 export const createItems = async () => {
