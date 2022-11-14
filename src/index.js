@@ -53,7 +53,7 @@ export const createStructure = async () => {
   await client.query(`CREATE TABLE descriptions (
       id SERIAL PRIMARY KEY,
       descriptions VARCHAR(10000) NOT NULL,
-      bookid INTEGER  NOT NULL,
+      bookid INTEGER NOT NULL,
       FOREIGN KEY(bookid) REFERENCES books(id)
       ON DELETE CASCADE
     );`);
@@ -64,7 +64,7 @@ export const createStructure = async () => {
       userid INTEGER  NOT NULL,
       FOREIGN KEY(userid) REFERENCES users(id)
       ON DELETE CASCADE
-      bookid INTEGER  NOT NULL,
+      bookid INTEGER NOT NULL,
       FOREIGN KEY(bookid) REFERENCES books(id)
       ON DELETE CASCADE
     )`);
