@@ -23,51 +23,51 @@ export const createStructure = async () => {
   const client = initConnection();
   client.connect();
 
-  await client.query('CREATE TABLE users (' +
-    '  id SERIAL PRIMARY KEY,' +
-    '  name VARCHAR(30) NOT NULL,' +
-    '  date DATE NOT NULL DEFAULT(\'2022-11-14\'));');
+  await client.query(`CREATE TABLE users (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(30) NOT NULL,
+      date DATE NOT NULL DEFAULT(\'2022-11-14\'));`);
 
-  await client.query('CREATE TABLE categories (' +
-    '  id SERIAL PRIMARY KEY,' +
-    '  name VARCHAR(30) NOT NULL);');
+  await client.query(`CREATE TABLE categories (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(30) NOT NULL);`);
 
-  await client.query('CREATE TABLE authors (' +
-    '  id SERIAL PRIMARY KEY,' +
-    '  name VARCHAR(30) NOT NULL);');
+  await client.query(`CREATE TABLE authors (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(30) NOT NULL);`);
 
-  await client.query('CREATE TABLE books (' +
-    ' id serial PRIMARY KEY NOT NULL,' +
-    ' title VARCHAR(30) NOT NULL,' +
-    ' userid INTEGER NOT NULL,' +
-    ' FOREIGN KEY(userid) REFERENCES users(id)' +
-    ' ON DELETE CASCADE,' +
-    ' authorid INTEGER NOT NULL,' +
-    ' FOREIGN KEY(authorid) REFERENCES authors(id)' +
-    ' ON DELETE CASCADE,' +
-    ' categoryid INTEGER NOT NULL,' +
-    ' FOREIGN KEY(categoryid) REFERENCES categories(id)' +
-    ' ON DELETE CASCADE' +
-    ');');
+  await client.query(`CREATE TABLE books (
+     id serial PRIMARY KEY NOT NULL,
+     title VARCHAR(30) NOT NULL,
+     userid INTEGER NOT NULL,
+     FOREIGN KEY(userid) REFERENCES users(id)
+     ON DELETE CASCADE,
+     authorid INTEGER NOT NULL,
+     FOREIGN KEY(authorid) REFERENCES authors(id)
+     ON DELETE CASCADE,
+     categoryid INTEGER NOT NULL,
+     FOREIGN KEY(categoryid) REFERENCES categories(id)
+     ON DELETE CASCADE
+    );`);
 
-  await client.query('CREATE TABLE descriptions (' +
-    '  id SERIAL PRIMARY KEY,' +
-    '  descriptions VARCHAR(10000) NOT NULL,' +
-    '  bookid INTEGER  NOT NULL,' +
-    '  FOREIGN KEY(bookid) REFERENCES book(id)' +
-    '  ON DELETE CASCADE' +
-    ');');
+  await client.query(`CREATE TABLE descriptions (
+      id SERIAL PRIMARY KEY,
+      descriptions VARCHAR(10000) NOT NULL,
+      bookid INTEGER  NOT NULL,
+      FOREIGN KEY(bookid) REFERENCES book(id)
+      ON DELETE CASCADE
+    );`);
 
-  await client.query('CREATE TABLE reviews (' +
-    '  id SERIAL PRIMARY KEY,' +
-    '  message VARCHAR(10000) NOT NULL,' +
-    '  userid INTEGER  NOT NULL,' +
-    '  FOREIGN KEY(userid) REFERENCES users(id),' +
-    '  ON DELETE CASCADE' +
-    '  bookid INTEGER  NOT NULL,' +
-    '  FOREIGN KEY(bookid) REFERENCES book(id)' +
-    '  ON DELETE CASCADE' +
-    ');');
+  await client.query(`CREATE TABLE reviews (
+      id SERIAL PRIMARY KEY,
+      message VARCHAR(10000) NOT NULL,
+      userid INTEGER  NOT NULL,
+      FOREIGN KEY(userid) REFERENCES users(id),
+      ON DELETE CASCADE
+      bookid INTEGER  NOT NULL,
+      FOREIGN KEY(bookid) REFERENCES book(id)
+      ON DELETE CASCADE
+    )`);
 
    client.end();
 };
