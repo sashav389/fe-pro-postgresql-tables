@@ -62,7 +62,7 @@ export const createStructure = async () => {
       id SERIAL PRIMARY KEY,
       message VARCHAR(10000) NOT NULL,
       userid INTEGER  NOT NULL,
-      FOREIGN KEY(userid) REFERENCES users(id),
+      FOREIGN KEY(userid) REFERENCES users(id)
       ON DELETE CASCADE
       bookid INTEGER  NOT NULL,
       FOREIGN KEY(bookid) REFERENCES books(id)
