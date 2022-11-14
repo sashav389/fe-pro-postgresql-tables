@@ -23,20 +23,20 @@ export const createStructure = async () => {
   const client = initConnection();
   client.connect();
 
-  await client.query('CREATE TABLE users (\n' +
+  await client.query('CREATE TABLE users (' +
     '  id SERIAL PRIMARY KEY,' +
     '  name VARCHAR(30) NOT NULL,' +
     '  date DATE NOT NULL DEFAULT(\'2022-11-14\'));');
 
-  await client.query('CREATE TABLE categories (\n' +
+  await client.query('CREATE TABLE categories (' +
     '  id SERIAL PRIMARY KEY,' +
     '  name VARCHAR(30) NOT NULL);');
 
-  await client.query('CREATE TABLE authors (\n' +
+  await client.query('CREATE TABLE authors (' +
     '  id SERIAL PRIMARY KEY,' +
     '  name VARCHAR(30) NOT NULL);');
 
-  await client.query('CREATE TABLE books (\n' +
+  await client.query('CREATE TABLE books (' +
     ' id serial PRIMARY KEY NOT NULL,' +
     ' title VARCHAR(30) NOT NULL,' +
     ' userid INTEGER NOT NULL,' +
@@ -50,7 +50,7 @@ export const createStructure = async () => {
     ' ON DELETE CASCADE' +
     ');');
 
-  await client.query('CREATE TABLE descriptions (\n' +
+  await client.query('CREATE TABLE descriptions (' +
     '  id SERIAL PRIMARY KEY,' +
     '  descriptions VARCHAR(10000) NOT NULL,' +
     '  bookid INTEGER  NOT NULL,' +
@@ -58,7 +58,7 @@ export const createStructure = async () => {
     '  ON DELETE CASCADE' +
     ');');
 
-  await client.query('CREATE TABLE reviews (\n' +
+  await client.query('CREATE TABLE reviews (' +
     '  id SERIAL PRIMARY KEY,' +
     '  message VARCHAR(10000) NOT NULL,' +
     '  userid INTEGER  NOT NULL,' +
