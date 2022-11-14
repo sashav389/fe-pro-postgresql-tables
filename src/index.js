@@ -54,7 +54,7 @@ export const createStructure = async () => {
       id SERIAL PRIMARY KEY,
       descriptions VARCHAR(10000) NOT NULL,
       bookid INTEGER  NOT NULL,
-      FOREIGN KEY(bookid) REFERENCES book(id)
+      FOREIGN KEY(bookid) REFERENCES books(id)
       ON DELETE CASCADE
     );`);
 
@@ -65,7 +65,7 @@ export const createStructure = async () => {
       FOREIGN KEY(userid) REFERENCES users(id),
       ON DELETE CASCADE
       bookid INTEGER  NOT NULL,
-      FOREIGN KEY(bookid) REFERENCES book(id)
+      FOREIGN KEY(bookid) REFERENCES books(id)
       ON DELETE CASCADE
     )`);
 
@@ -76,7 +76,7 @@ export const createItems = async () => {
   const client = initConnection();
   client.connect();
 
-  await client.query('INSERT INTO users ( name, date) VALUES(\'Mike\', \'2022-10-10\');');
+  await client.query('INSERT INTO users ( name, date) VALUES(\'Mike\');');
   await client.query('INSERT INTO categories (name) VALUES(\'Thrill\');');
   await client.query('INSERT INTO authors (name) VALUES(\'Shevchenko\');');
   await client.query('INSERT INTO books (title, userid, authorid, categories)' +
