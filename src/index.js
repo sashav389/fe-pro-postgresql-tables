@@ -12,7 +12,7 @@ export const initConnection = () => {
     user: POSTGRES_USER || 'postgres',
     host: POSTGRES_HOST || 'localhost',
     database: POSTGRES_DB || 'education',
-    password: POSTGRES_PASSWORD || 'postgres',
+    password: POSTGRES_PASSWORD || 'testtemp',
     port: POSTGRES_PORT || 5432,
   });
 
