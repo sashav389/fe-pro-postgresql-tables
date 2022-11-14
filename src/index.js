@@ -26,7 +26,7 @@ export const createStructure = async () => {
   await client.query(`CREATE TABLE users (
       id SERIAL PRIMARY KEY,
       name VARCHAR(30) NOT NULL,
-      date DATE NOT NULL DEFAULT(\'2022-11-14\'));`);
+      date DATE NOT NULL DEFAULT(CURRENT_DATE));`);
 
   await client.query(`CREATE TABLE categories (
       id SERIAL PRIMARY KEY,
